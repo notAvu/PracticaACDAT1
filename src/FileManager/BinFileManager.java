@@ -1,5 +1,7 @@
 package FileManager;
 
+import Clases.Persona;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,18 +11,22 @@ public class BinFileManager {
     private File file;
     private RandomAccessFile randomAccess;
 
-    public BinFileManager(File file) throws FileNotFoundException {
+    public BinFileManager(File file) {
         this.file = file;
-        this.randomAccess = new RandomAccessFile(file,"rws");
+        try {
+            this.randomAccess = new RandomAccessFile(file,"rw");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public BinFileManager(String fileName) throws FileNotFoundException {
-        this.randomAccess= new RandomAccessFile(new File(fileName),"rws");
+        this.randomAccess= new RandomAccessFile(new File(fileName),"rw");
     }
 
     public void writeString(String string)
     {
         try {
-            randomAccess.writeChars(string);
+            randomAccess.writeUTF(string);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,24 +39,44 @@ public class BinFileManager {
             e.printStackTrace();
         }
     }
-    public void readString(long position)
+    public String readString(int position)
     {
+        String value="";
         try {
             randomAccess.seek(position);
-            randomAccess.readLine();
+            value= randomAccess.readUTF();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return value;
     }
-    public void readIntlong(long position)
+    public int readInt(int position)
     {
+        int i =0;
         try {
             randomAccess.seek(position);
-            randomAccess.readLine();
+            i=randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return i;
     }
 
+    public void writePerson(Persona client)
+    {
+        this.writeString(client.getNombre());
+        this.writeString(client.getApellidos());
+        this.writeString(client.getDni());
+        this.writeString(client.getDireccion());
+        this.writeNumber(client.getNumTelefono());
+    }
+    public Persona readPerson(int position)
+    {
+        return new Persona(this.readString(position),
+                this.readString(position),
+                this.readString(position),
+                this.readString(position),
+                this.readInt(position));
+    }
 
 }
