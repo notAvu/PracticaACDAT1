@@ -81,5 +81,8 @@ public class Persona {
         this.numTelefono = numTelefono;
     }
 
-
+    @Override
+    public String toString() {
+        return "nombre='%s', apellidos='%s', dni='%s', direccion='%s', numTelefono=%d".formatted(nombre, apellidos, dni, direccion, numTelefono);
+    }
 }

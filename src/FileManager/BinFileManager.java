@@ -41,20 +41,29 @@ public class BinFileManager {
     }
     public String readString(int position)
     {
-        String value="";
         try {
             randomAccess.seek(position);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return read();
+    }
+
+    private String read() {
+        String value="";
+        try {
+
             value= randomAccess.readUTF();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return value;
     }
-    public int readInt(int position)
+
+    public int readInt()
     {
         int i =0;
         try {
-            randomAccess.seek(position);
             i=randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,10 +82,10 @@ public class BinFileManager {
     public Persona readPerson(int position)
     {
         return new Persona(this.readString(position),
-                this.readString(position),
-                this.readString(position),
-                this.readString(position),
-                this.readInt(position));
+                this.read(),
+                this.read(),
+                this.read(),
+                this.readInt());
     }
 
 }

@@ -11,8 +11,12 @@ public class Main {
         BinFileManager clientes=new BinFileManager(new File("Clientes"));
         BinFileManager listado=new BinFileManager(new File("ClientesList"));
 
-        Persona yo = new Persona("Pepe", "Viyuela","38361517R", "lejos", 617829301);
+        Persona yo = new Persona("Pepe", "Pepez","38361517R", "lejos", 617829301);
+        Persona tu = new Persona("Dario", "Dariez","12345678A", "lejos", 617822501);
+        clientes.writePerson(tu);
         clientes.writePerson(yo);
+
+        clientes.readPerson(0);
 
 
     }
