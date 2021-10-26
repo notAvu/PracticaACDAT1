@@ -1,5 +1,7 @@
 package FileManager;
 
+import Clases.Persona;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,18 +11,22 @@ public class BinFileManager {
     private File file;
     private RandomAccessFile randomAccess;
 
-    public BinFileManager(File file) throws FileNotFoundException {
+    public BinFileManager(File file) {
         this.file = file;
-        this.randomAccess = new RandomAccessFile(file,"rws");
+        try {
+            this.randomAccess = new RandomAccessFile(file,"rw");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public BinFileManager(String fileName) throws FileNotFoundException {
-        this.randomAccess= new RandomAccessFile(new File(fileName),"rws");
+        this.randomAccess= new RandomAccessFile(new File(fileName),"rw");
     }
 
     public void writeString(String string)
     {
         try {
-            randomAccess.writeChars(string);
+            randomAccess.writeUTF(string);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,24 +39,53 @@ public class BinFileManager {
             e.printStackTrace();
         }
     }
-    public void readString(long position)
+    public String readString(int position)
     {
         try {
             randomAccess.seek(position);
-            randomAccess.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
-    }
-    public void readIntlong(long position)
-    {
-        try {
-            randomAccess.seek(position);
-            randomAccess.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return read();
     }
 
+    private String read() {
+        String value="";
+        try {
+
+            value= randomAccess.readUTF();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    public int readInt()
+    {
+        int i =0;
+        try {
+            i=randomAccess.readInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public void writePerson(Persona client)
+    {
+        this.writeString(client.getNombre());
+        this.writeString(client.getApellidos());
+        this.writeString(client.getDni());
+        this.writeString(client.getDireccion());
+        this.writeNumber(client.getNumTelefono());
+    }
+    public Persona readPerson(int position)
+    {
+        return new Persona(this.readString(position),
+                this.read(),
+                this.read(),
+                this.read(),
+                this.readInt());
+    }
 
 }
