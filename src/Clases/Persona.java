@@ -34,7 +34,7 @@ public class Persona {
     }
     private boolean isDniLetterValid()
     {
-        char letra=dni.charAt(9);
+        char letra=Character.toUpperCase(dni.charAt(9));
         long numDni= Long.parseLong(this.dni.substring(0,8));
         int resto= (int) (numDni%23);
         String[] dniChars="T,R,W,A,G,M,Y,F,P,D,X,B,N,J,Z,S,Q,V,H,L,C,K,E".split(",");
