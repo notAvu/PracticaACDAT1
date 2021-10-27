@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class BinFileManager {
+    private static final int REG_SIZE = 97;
     private File file;
     private RandomAccessFile randomAccess;
 
@@ -42,7 +43,7 @@ public class BinFileManager {
     public String readString(int position)
     {
         try {
-            randomAccess.seek(position);
+            randomAccess.seek((long) position *REG_SIZE);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -52,7 +53,6 @@ public class BinFileManager {
     private String read() {
         String value="";
         try {
-
             value= randomAccess.readUTF();
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,6 +78,7 @@ public class BinFileManager {
         this.writeString(client.getDni());
         this.writeString(client.getDireccion());
         this.writeNumber(client.getNumTelefono());
+
     }
     public Persona readPerson(int position)
     {
@@ -86,6 +87,15 @@ public class BinFileManager {
                 this.read(),
                 this.read(),
                 this.readInt());
+    }
+
+    public void close()
+    {
+        try {
+            randomAccess.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
