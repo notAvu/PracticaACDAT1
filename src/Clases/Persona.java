@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.Objects;
+
 /**
  * @Author Alvaro Fernandez
  *
@@ -85,4 +87,13 @@ public class Persona {
     public String toString() {
         return "nombre='%s', apellidos='%s', dni='%s', direccion='%s', numTelefono=%d".formatted(nombre, apellidos, dni, direccion, numTelefono);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return numTelefono == persona.numTelefono && Objects.equals(nombre, persona.nombre) && Objects.equals(apellidos, persona.apellidos) && Objects.equals(dni, persona.dni) && Objects.equals(direccion, persona.direccion);
+    }
+
 }

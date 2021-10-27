@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class BinFileManager {
-    private static final int REG_SIZE = 97;
+    private static final int REG_SIZE = 214;
     private File file;
     private RandomAccessFile randomAccess;
 
@@ -35,7 +35,7 @@ public class BinFileManager {
     public void writeNumber(int num)
     {
         try {
-            randomAccess.write(num);
+            randomAccess.writeInt(num);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,10 +60,11 @@ public class BinFileManager {
         return value;
     }
 
-    public int readInt()
+    public int readInt(long position)
     {
         int i =0;
         try {
+            randomAccess.seek(position);
             i=randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,11 +83,17 @@ public class BinFileManager {
     }
     public Persona readPerson(int position)
     {
-        return new Persona(this.readString(position),
-                this.read(),
-                this.read(),
-                this.read(),
-                this.readInt());
+        Persona re=null;
+        try {
+             re=new Persona(this.readString(position),
+                    this.read(),
+                    this.read(),
+                    this.read(),
+                    this.readInt(randomAccess.getFilePointer()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return re;
     }
 
     public void close()
