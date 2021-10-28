@@ -83,9 +83,9 @@ public class BinFileManager {
     }
     public Persona readPerson(int position)
     {
-        Persona re=null;
+        Persona persona=null;
         try {
-             re=new Persona(this.readString(position),
+             persona=new Persona(this.readString(position),
                     this.read(),
                     this.read(),
                     this.read(),
@@ -93,7 +93,7 @@ public class BinFileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return re;
+        return persona;
     }
 
     public void close()

@@ -12,10 +12,12 @@ public class Main {
         Persona tu = new Persona("Pepe", "Lopez","38361517R", "lejos", 617829301);
         clientes.writePerson(tu);
 
-        Persona per= clientes.readPerson(0);
+        Persona per= clientes.readPerson(2);
         clientes.close();
+        System.out.println(per.getNombre());
+        System.out.println(per.getApellidos());
+        System.out.println(per.getDni());
+        System.out.println(per.getDireccion());
         System.out.print(per.getNumTelefono());
-
-
     }
 }
