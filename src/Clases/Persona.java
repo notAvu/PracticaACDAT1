@@ -22,6 +22,10 @@ public class Persona {
         this.numTelefono = numTelefono;
     }
 
+    public boolean validarTlfn()
+    {
+        return String.valueOf(numTelefono).length()==9;
+    }
     public boolean validar(){ return new DniValidator(dni).validar();}
     public String getNombre() {
         return nombre;
@@ -65,7 +69,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "nombre='%s', apellidos='%s', dni='%s', direccion='%s', numTelefono=%d".formatted(nombre, apellidos, dni, direccion, numTelefono);
+        return nombre+","+ apellidos+","+ dni+","+direccion+","+numTelefono;
     }
 
     @Override

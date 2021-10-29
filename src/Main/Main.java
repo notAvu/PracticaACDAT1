@@ -2,22 +2,17 @@ package Main;
 
 import Clases.Persona;
 import FileManager.BinFileManager;
+import FileManager.IndexManager;
+import FileManager.PersonaManager;
 
 import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        BinFileManager clientes=new BinFileManager(new File("Clientes"));
+        PersonaManager clients= new PersonaManager("Clientes");
+        IndexManager indice= new IndexManager("Indice_clientes");
+        IndexManager config= new IndexManager("config");
 
-        Persona tu = new Persona("Pepe", "Lopez","38361517R", "lejos", 617829301);
-        clientes.writePerson(tu);
 
-        Persona per= clientes.readPerson(2);
-        clientes.close();
-        System.out.println(per.getNombre());
-        System.out.println(per.getApellidos());
-        System.out.println(per.getDni());
-        System.out.println(per.getDireccion());
-        System.out.print(per.getNumTelefono());
     }
 }

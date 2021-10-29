@@ -3,30 +3,35 @@ package FileManager;
 import Clases.Persona;
 
 import java.io.*;
+import java.nio.charset.Charset;
 
 public class TextFileManager {
     File txtFile;
     BufferedWriter writer;
     BufferedReader reader;
+    Charset charset;
 
-    public TextFileManager()
+    public TextFileManager(Charset charset)
     {
+        if(txtFile.exists())
+        {
+            txtFile.delete();
+        }
         txtFile=new File("InfoClientesTxt");
-        iniReader();
-        iniWriter();
+        this.charset=charset;
     }
 
     private void iniReader()
     {
         try {
-            reader=new BufferedReader(new FileReader(txtFile));
-        } catch (FileNotFoundException e) {
+            reader=new BufferedReader(new FileReader(txtFile, charset));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private void iniWriter() {
         try {
-            writer=new BufferedWriter(new FileWriter(txtFile));
+            writer=new BufferedWriter(new FileWriter(txtFile, charset));
         } catch (IOException exception) {
             exception.printStackTrace();
         }

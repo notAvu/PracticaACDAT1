@@ -17,7 +17,7 @@ class BinFileManagerTest {
 
         CLIENTE.writeString("Assert");
 
-        assertEquals(CLIENTE.readString(0), "Assert");
+        assertEquals(CLIENTE.readFirst(0), "Assert");
     }
 
     @Test
