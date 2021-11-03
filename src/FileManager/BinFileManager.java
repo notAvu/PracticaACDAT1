@@ -110,7 +110,7 @@ public class BinFileManager {
             this.writeString(client.getApellidos());
             this.writeString(client.getDni());
             this.writeString(client.getDireccion());
-            this.writeNumber(client.getNumTelefono());
+            this.writeString(client.getNumTelefono());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,15 +127,11 @@ public class BinFileManager {
     public Persona readPerson(int position)
     {
         Persona persona=null;
-        try {
-             persona=new Persona(this.readFirst(position),
-                    this.readString(),
-                    this.readString(),
-                    this.readString(),
-                    this.readInt(randomAccess.getFilePointer()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        persona=new Persona(this.readFirst(position),
+               this.readString(),
+               this.readString(),
+               this.readString(),
+               this.readString());
         return persona;
     }
     public void remove(int position)
@@ -156,7 +152,7 @@ public class BinFileManager {
             TextFileManager textFileManager=new TextFileManager(StandardCharsets.UTF_8);
             Persona aux=readPerson(i);
             if(aux.validar()) {
-                textFileManager.escribirCliente(aux);
+                textFileManager.writeClient(aux);
             }
             i++;
         }

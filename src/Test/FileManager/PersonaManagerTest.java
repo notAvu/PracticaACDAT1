@@ -1,0 +1,53 @@
+package Test.FileManager;
+
+import Clases.Persona;
+import FileManager.BinFileManager;
+import FileManager.PersonaManager;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileReader;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PersonaManagerTest {
+
+    final PersonaManager CLIENTE = new PersonaManager(new File("Clientes"));
+    final Persona p1 = new Persona("Dario", "Sanchez", "12345678A", "lejos", "617822501");
+    final Persona p2 = new Persona("Vamono", "Sanchez", "12345675B", "to lejo", "360822251");
+
+    private void escribirClientes() {
+        CLIENTE.writePerson(p1, 0);
+        CLIENTE.writePerson(p2, 1);
+    }
+
+    @org.junit.jupiter.api.Test
+    void writeStringTest() {
+
+        CLIENTE.writeString("Assert");
+
+        assertEquals(CLIENTE.readFirst(0), "Assert");
+    }
+
+    @Test
+    void writeNumberTest() {
+
+        CLIENTE.writeNumber(12);
+
+        assertEquals(CLIENTE.readInt(0), 12);
+    }
+
+    @Test
+    void writeReadPersonTest() {
+
+        escribirClientes();
+
+        assertEquals(CLIENTE.readPerson(1), p2);
+        assertEquals(CLIENTE.readPerson(0), p1);
+    }
+
+    @Test
+    void exportTest() {
+        escribirClientes();
+    }
+}

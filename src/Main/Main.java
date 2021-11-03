@@ -24,25 +24,33 @@ public class Main {
             switch (ans) {
                 case "1" -> {
                     addPersona(clients, scan);
-                    break;
                 }
                 case "2" -> {
-                    break;
+                    Menu.printInfo(Menu.DNI);
+//                    String dni = scan.next();
+//                    Persona p= clients.readPerson(indice.);
+
                 }
                 case "3" -> {
-                    break;
+                    Menu.printInfo(Menu.DNI);
+                    String dni=scan.next();
                 }
                 case "4" -> {
-                    break;
+
                 }
                 case "5" -> {
-                    break;
+
                 }
                 default -> {
-                    break;
+
                 }
             }
         }
+    }
+
+    private static void addToIndex(String dni, int position)
+    {
+
     }
 
     private static void addPersona(PersonaManager clients, Scanner scan) {

@@ -37,11 +37,11 @@ public class TextFileManager {
         }
     }
 
-    public void escribirCliente(Persona cliente)
+    public void writeClient(Persona client)
     {
         iniWriter();
         try {
-            writer.write(cliente.toString());
+            writer.write(client.toString());
         } catch (IOException exception) {
             exception.printStackTrace();
         }

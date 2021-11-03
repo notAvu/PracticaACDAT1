@@ -6,12 +6,15 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class IndexManager {
+    private final static int REG_SIZE=13;
+    private static int position;
     private File file;
     protected RandomAccessFile randomAccess;
 
     public IndexManager(File file) {
         this.file = file;
         try {
+            position=0;
             this.randomAccess = new RandomAccessFile(file, "rw");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -20,6 +23,7 @@ public class IndexManager {
 
     public IndexManager(String fileName) {
         try {
+            position=0;
             this.randomAccess = new RandomAccessFile(new File(fileName), "rw");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -66,16 +70,16 @@ public class IndexManager {
      * Metodo para facilitar la lectura de enteros del fichero
      *
      * @param position
-     * @return
+     * @return int num
      */
     public int readInt(long position) {
-        int i = 0;
+        int num = 0;
         try {
             randomAccess.seek(position);
-            i = randomAccess.readInt();
+            num = randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return i;
+        return num;
     }
 }

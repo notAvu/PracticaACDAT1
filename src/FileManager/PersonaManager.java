@@ -3,7 +3,6 @@ package FileManager;
 import Clases.Persona;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -19,9 +18,9 @@ public class PersonaManager extends IndexManager{
     }
 
     /**
-     * Metodo para escribir todos los atributos de un objeto Persona en el fichero
-     * Precondiciones: client debe ser un objeto valido de la clase Persona
-     * Poscondiciones: se deben haber registrado los atributos de la persona en el fichero
+     * Metodo para escribir todos los atributos de un objeto Persona en el fichero<br/>
+     * Precondiciones: client debe ser un objeto valido de la clase Persona<br/>
+     * Poscondiciones: se deben haber registrado los atributos de la persona en el fichero<br/>
      * @param client
      */
     public void writePerson(Persona client, long position)
@@ -33,7 +32,7 @@ public class PersonaManager extends IndexManager{
             this.writeString(client.getApellidos());
             this.writeString(client.getDni());
             this.writeString(client.getDireccion());
-            this.writeNumber(client.getNumTelefono());
+            this.writeString(client.getNumTelefono());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,20 +64,12 @@ public class PersonaManager extends IndexManager{
     public Persona readPerson(int position)
     {
         Persona persona=null;
-        try {
-            persona=new Persona(this.readFirst(position),
-                    this.readString(),
-                    this.readString(),
-                    this.readString(),
-                    this.readInt(this.randomAccess.getFilePointer()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        persona=new Persona(this.readFirst(position),
+                this.readString(),
+                this.readString(),
+                this.readString(),
+                this.readString());
         return persona;
-    }
-    public void remove(int position)
-    {
-        //TODO
     }
 
     /**
@@ -94,7 +85,7 @@ public class PersonaManager extends IndexManager{
             TextFileManager textFileManager=new TextFileManager(charset);
             Persona aux=readPerson(i);
             if(aux.validar()) {
-                textFileManager.escribirCliente(aux);
+                textFileManager.writeClient(aux);
             }
             i++;
         }

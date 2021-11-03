@@ -12,9 +12,9 @@ public class Persona {
     private String apellidos;
     private String dni;
     private String direccion;
-    private int numTelefono;
+    private String numTelefono;
 
-    public Persona(String nombre, String apellidos, String dni, String direccion, int numTelefono) {
+    public Persona(String nombre, String apellidos, String dni, String direccion, String numTelefono) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -59,11 +59,11 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public int getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -77,7 +77,7 @@ public class Persona {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Persona persona = (Persona) o;
-        return numTelefono == persona.numTelefono && Objects.equals(nombre, persona.nombre) && Objects.equals(apellidos, persona.apellidos) && Objects.equals(dni, persona.dni) && Objects.equals(direccion, persona.direccion);
+        return Objects.equals(dni, persona.dni);
     }
 
 }
