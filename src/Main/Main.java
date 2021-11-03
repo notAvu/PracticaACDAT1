@@ -75,18 +75,10 @@ public class Main {
             }
             Menu.printInfo(Menu.TELEFONO);
             telefono = scan.next();
-            try
-            {
-                tlfn=Integer.parseInt(telefono);
-            }catch (NumberFormatException e)
-            {
-                Menu.invalidTelephone();
-                telefono="";
-            }
             Menu.printInfo(Menu.DIRECCION);
             direccion = scan.next();
         }
-        Persona persona = new Persona(nombre, apellido, dni, direccion, tlfn);
+        Persona persona = new Persona(nombre, apellido, dni, direccion, telefono);
         clients.writePerson(persona, 0);
     }
 }

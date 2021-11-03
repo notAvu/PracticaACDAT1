@@ -1,12 +1,11 @@
 package Test.FileManager;
 
 import Clases.Persona;
-import FileManager.BinFileManager;
 import FileManager.PersonaManager;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileReader;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,5 +48,6 @@ class PersonaManagerTest {
     @Test
     void exportTest() {
         escribirClientes();
+        CLIENTE.export(StandardCharsets.UTF_16);
     }
 }

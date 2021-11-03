@@ -82,4 +82,10 @@ public class IndexManager {
         }
         return num;
     }
+
+    public int getPosition(String dni)
+    {
+        //TODO
+        return 0;
+    }
 }

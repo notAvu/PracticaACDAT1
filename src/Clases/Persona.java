@@ -24,7 +24,7 @@ public class Persona {
 
     public boolean validarTlfn()
     {
-        return String.valueOf(numTelefono).length()==9;
+        return numTelefono.length()==9;
     }
     public boolean validar(){ return new DniValidator(dni).validar();}
     public String getNombre() {
