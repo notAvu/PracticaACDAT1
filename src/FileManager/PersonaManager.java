@@ -24,13 +24,19 @@ public class PersonaManager extends IndexManager{
      * Poscondiciones: se deben haber registrado los atributos de la persona en el fichero
      * @param client
      */
-    public void writePerson(Persona client)
+    public void writePerson(Persona client, long position)
     {
-        this.writeString(client.getNombre());
-        this.writeString(client.getApellidos());
-        this.writeString(client.getDni());
-        this.writeString(client.getDireccion());
-        this.writeNumber(client.getNumTelefono());
+        try {
+            this.randomAccess.seek(position *REG_SIZE);
+
+            this.writeString(client.getNombre());
+            this.writeString(client.getApellidos());
+            this.writeString(client.getDni());
+            this.writeString(client.getDireccion());
+            this.writeNumber(client.getNumTelefono());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

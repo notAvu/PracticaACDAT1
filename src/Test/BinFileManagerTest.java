@@ -32,9 +32,12 @@ class BinFileManagerTest {
     void writeReadPerson() {
 
         Persona yo = new Persona("Dario", "Sanchez", "12345678A", "lejos", 617822501);
+        Persona tu = new Persona("Pepe", "Sanchez", "12345678A", "lejos", 617822501);
 
-        CLIENTE.writePerson(yo);
+        CLIENTE.writePerson(yo, 0);
 
-        assertEquals(CLIENTE.readPerson(0), yo);
+        CLIENTE.writePerson(tu, 1);
+
+        assertEquals(CLIENTE.readPerson(1), tu);
     }
 }

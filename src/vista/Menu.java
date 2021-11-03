@@ -20,7 +20,15 @@ public class Menu {
     {
         System.out.println(MAIN_MENU);
     }
-    public static void askInfo(String info){
-        System.out.println(NOMBRE);
+    public static void printInfo(String info){
+        System.out.println(info);
+    }
+    public static void printInvalidDni()
+    {
+        System.out.println("El DNI no es valido");
+    }
+    public static void invalidTelephone()
+    {
+        System.out.println("El valor introducido no es un numero de telefono valido");
     }
 }
