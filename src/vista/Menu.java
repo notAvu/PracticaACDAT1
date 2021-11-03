@@ -20,4 +20,7 @@ public class Menu {
     {
         System.out.println(MAIN_MENU);
     }
+    public static void askInfo(String info){
+        System.out.println(NOMBRE);
+    }
 }
