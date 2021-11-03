@@ -13,10 +13,6 @@ public class TextFileManager {
 
     public TextFileManager(Charset charset)
     {
-        if(txtFile.exists())
-        {
-            txtFile.delete();
-        }
         txtFile=new File("InfoClientesTxt");
         this.charset=charset;
     }

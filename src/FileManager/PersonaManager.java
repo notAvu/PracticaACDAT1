@@ -80,10 +80,11 @@ public class PersonaManager extends IndexManager{
     public void export(Charset charset)
     {
         int i=0;
-        while(i>=0)
+        while(i>=0)//TODO revisar esta movida
         {
             TextFileManager textFileManager=new TextFileManager(charset);
             Persona aux=readPerson(i);
+            if(aux==null){break;}//TODO
             if(aux.validar()) {
                 textFileManager.writeClient(aux);
             }
