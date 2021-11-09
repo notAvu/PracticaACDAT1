@@ -93,7 +93,7 @@ public class IndexManager {
         String id;
         long position=0;
         boolean found=false;
-        for(long i=0 ; i<file.length() && !found; i++)
+        for(long i=0 ; i<file.length()/REG_SIZE && !found; i++)
         {
             i= readLong(i*REG_SIZE);
             id=readString();
@@ -102,7 +102,6 @@ public class IndexManager {
                 position=i;
                 found=true;
             }
-
         }
         return position;
     }

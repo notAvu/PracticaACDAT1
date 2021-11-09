@@ -72,6 +72,7 @@ public class Main {
         addToIndex(indexManager, dni, nextPosition);
     }
 
+
     private static String askDireccion(Scanner scan) {
         String direccion;
         Menu.printInfo(Menu.DIRECCION);
