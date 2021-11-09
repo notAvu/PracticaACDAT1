@@ -40,7 +40,6 @@ class PersonaManagerTest {
     void writeReadPersonTest() {
 
         escribirClientes();
-
         assertEquals(CLIENTE.readPerson(1), p2);
         assertEquals(CLIENTE.readPerson(0), p1);
     }
@@ -48,6 +47,6 @@ class PersonaManagerTest {
     @Test
     void exportTest() {
         escribirClientes();
-        CLIENTE.export(StandardCharsets.UTF_16);
+        CLIENTE.export(StandardCharsets.UTF_16);//TODO testear con textfilemanager si se ha exportado el contenido del fichero correctamente
     }
 }

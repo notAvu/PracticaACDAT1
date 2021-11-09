@@ -13,7 +13,6 @@ public class PersonaManager extends IndexManager{
     }
 
     public PersonaManager(String fileName){
-
         super(fileName);
     }
 
@@ -27,7 +26,6 @@ public class PersonaManager extends IndexManager{
     {
         try {
             this.randomAccess.seek(position *REG_SIZE);
-
             this.writeString(client.getNombre());
             this.writeString(client.getApellidos());
             this.writeString(client.getDni());
