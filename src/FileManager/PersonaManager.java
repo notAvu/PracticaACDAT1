@@ -42,10 +42,10 @@ public class PersonaManager extends IndexManager{
      * @param position
      * @return
      */
-    public String readFirst(int position)
+    public String readFirst(long position)
     {
         try {
-            randomAccess.seek((long) position * REG_SIZE);
+            randomAccess.seek( position * REG_SIZE);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -59,7 +59,7 @@ public class PersonaManager extends IndexManager{
      * @param position
      * @return persona
      */
-    public Persona readPerson(int position)
+    public Persona readPerson(long position)
     {
         Persona persona=null;
         persona=new Persona(this.readFirst(position),

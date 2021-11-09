@@ -11,6 +11,11 @@ public class IndexManager {
     private File file;
     protected RandomAccessFile randomAccess;
 
+    public long lastIndex()
+    {
+        return file.length()/REG_SIZE;
+    }
+
     public IndexManager(File file) {
         this.file = file;
         try {
@@ -48,9 +53,9 @@ public class IndexManager {
      *
      * @param num
      */
-    public void writeNumber(int num) {
+    public void writeNumber(long num) {
         try {
-            randomAccess.writeInt(num);
+            randomAccess.writeLong(num);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +77,7 @@ public class IndexManager {
      * @param position
      * @return int num
      */
-    public int readInt(long position) {
+    public long readInt(long position) {
         int num = 0;
         try {
             randomAccess.seek(position);

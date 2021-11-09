@@ -47,7 +47,7 @@ public class Main {
         }
     }
 
-    private static void addToIndex(IndexManager manager,String dni, int position)
+    private static void addToIndex(IndexManager manager,String dni, long position)
     {
         manager.writeNumber(position);
         manager.writeString(dni);
@@ -67,8 +67,9 @@ public class Main {
             direccion = askDireccion(scan);
         }
         Persona persona = new Persona(nombre, apellido, dni, direccion, telefono);
-        clientManager.writePerson(persona, 0);
-        addToIndex(indexManager, dni, 0);
+        long nextPosition= indexManager.lastIndex();
+        clientManager.writePerson(persona, nextPosition);
+        addToIndex(indexManager, dni, nextPosition);
     }
 
     private static String askDireccion(Scanner scan) {
