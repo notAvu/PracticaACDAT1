@@ -33,7 +33,7 @@ class PersonaManagerTest {
 
         CLIENTE.writeNumber(12);
 
-        assertEquals(CLIENTE.readInt(0), 12);
+        assertEquals(CLIENTE.readLong(0), 12);
     }
 
     @Test

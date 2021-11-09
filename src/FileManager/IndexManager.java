@@ -77,7 +77,7 @@ public class IndexManager {
      * @param position
      * @return int num
      */
-    public long readInt(long position) {
+    public long readLong(long position) {
         int num = 0;
         try {
             randomAccess.seek(position);
@@ -88,9 +88,22 @@ public class IndexManager {
         return num;
     }
 
-    public int getPosition(String dni)
+    public long getPosition(String dni)
     {
-        //TODO
-        return 0;
+        String id;
+        long position=0;
+        boolean found=false;
+        for(long i=0 ; i<file.length() && !found; i++)
+        {
+            i= readLong(i*REG_SIZE);
+            id=readString();
+            if(id.equals(dni))
+            {
+                position=i;
+                found=true;
+            }
+
+        }
+        return position;
     }
 }
