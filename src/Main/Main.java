@@ -83,7 +83,7 @@ public class Main {
     private static String askTelefono(Scanner scan) {
         String telefono;
         Menu.printInfo(Menu.TELEFONO);
-        telefono = scan.next();
+        telefono = scan.next();//TODO VALIDAR TELEFONO
         return telefono;
     }
 
