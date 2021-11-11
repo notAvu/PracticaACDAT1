@@ -34,6 +34,8 @@ class IndexManagerTest {
 
     @Test
     void testGetPosition() {
+        assertEquals(0, FIN.getPosition("12345678R"));
         assertEquals(1, FIN.getPosition("32345678R"));
+        assertEquals(2, FIN.getPosition("22345678R"));
     }
 }

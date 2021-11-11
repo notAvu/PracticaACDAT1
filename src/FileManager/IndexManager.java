@@ -7,7 +7,6 @@ import java.io.RandomAccessFile;
 
 public class IndexManager {
     private final static int REG_SIZE=26;
-    private static int position;
     private File file;
     protected RandomAccessFile randomAccess;
 
@@ -46,7 +45,6 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
     /**
      * Metodo para facilitar la escritura de enteros en el fichero
      *
@@ -59,7 +57,6 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
     protected String readString() {
         String value = "";
         try {
@@ -89,7 +86,7 @@ public class IndexManager {
 
     public long getPosition(String dni)
     {
-        String id="";
+        String id;
         long position=-1;
         boolean found=false;
         for(long i=0 ; i<file.length()/REG_SIZE && !found; i++)
