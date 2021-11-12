@@ -77,6 +77,12 @@ public class IndexManager {
         }
         return num;
     }
+
+    /**
+     * Cambia el numero de la posicion de un registro a -1 para denotar que ese registro no existe
+     * y asi no se reconozca en las busquedas
+     * @param position
+     */
     public void borrarRegistro(long position)
     {
         try {
@@ -86,6 +92,14 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Permite obtener la posicion de un DNI en el indice
+     * Precondiciones: el DNI debe haber sido validado
+     * Poscondiciones: ninguna
+     * @param dni
+     * @return position : posicion del dni en el fichero de indice
+     */
     public long getPosition(String dni)
     {
         String id;
