@@ -31,7 +31,6 @@ public class IndexManager {
     }
     /**
      * Metodo para facilitar la escritura de cadenas en el fichero
-     *
      * @param string
      */
     public void writeString(String string) {
@@ -77,6 +76,15 @@ public class IndexManager {
             e.printStackTrace();
         }
         return num;
+    }
+    public void borrarRegistro(long position)
+    {
+        try {
+            randomAccess.seek(position*REG_SIZE);
+            randomAccess.writeLong(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public long getPosition(String dni)
     {

@@ -2,8 +2,14 @@ package Clases;
 
 public class DniValidator {
     private String dni;
-    public DniValidator(String dni) {
-        this.dni = dni;
+    public DniValidator(String inputDni) {
+        if(inputDni.length()<9){
+            for(int i=0; i<(18-inputDni.length()); i++)
+            {
+                inputDni+="U";
+            }
+        }
+        this.dni = inputDni;
     }
     public boolean validar() {
         String letraMayuscula;
@@ -20,12 +26,12 @@ public class DniValidator {
         boolean valido=true;
         int i, j = 0;
         String numero;
-        StringBuilder miDNI = new StringBuilder();
+        String miDNI = "";
         String[] unoNueve = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         for (i = 0; i < this.dni.length() - 1; i++) {
             numero = this.dni.substring(i, i + 1);
             for (j = 0; j < unoNueve.length; j++) {
-                if (numero.equals(unoNueve[j])) { miDNI.append(unoNueve[j]); }
+                if (numero.equals(unoNueve[j])) { miDNI += unoNueve[j];}
             }
         }
         if (miDNI.length() != 8) {

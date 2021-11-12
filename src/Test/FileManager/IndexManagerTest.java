@@ -44,4 +44,10 @@ class IndexManagerTest {
         assertEquals(1, FIN.getPosition("32345678R"));
         assertEquals(2, FIN.getPosition("22345678R"));
     }
+
+    @Test
+    void borrarRegistro() {
+        FIN.borrarRegistro(2);
+        assertEquals(-1, FIN.readLong(2));
+    }
 }
