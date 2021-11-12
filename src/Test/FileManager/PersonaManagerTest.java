@@ -20,25 +20,8 @@ class PersonaManagerTest {
         CLIENTE.writePerson(p2, 1);
     }
 
-    @org.junit.jupiter.api.Test
-    void writeStringTest() {
-
-        CLIENTE.writeString("Assert");
-
-        assertEquals(CLIENTE.readFirst(0), "Assert");
-    }
-
-    @Test
-    void writeNumberTest() {
-
-        CLIENTE.writeNumber(12);
-
-        assertEquals(CLIENTE.readLong(0), 12);
-    }
-
     @Test
     void writeReadPersonTest() {
-
         escribirClientes();
         assertEquals(CLIENTE.readPerson(1), p2);
         assertEquals(CLIENTE.readPerson(0), p1);

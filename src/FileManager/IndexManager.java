@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class IndexManager {
-    private final static int REG_SIZE=17;
-    private static int position;
+    private final static int REG_SIZE=26;
     private File file;
     protected RandomAccessFile randomAccess;
 
@@ -19,7 +18,6 @@ public class IndexManager {
     public IndexManager(File file) {
         this.file = file;
         try {
-            position=0;
             this.randomAccess = new RandomAccessFile(file, "rw");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -27,8 +25,8 @@ public class IndexManager {
     }
 
     public IndexManager(String fileName) {
+        this.file= new File(fileName);
         try {
-            position=0;
             this.randomAccess = new RandomAccessFile(new File(fileName), "rw");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
