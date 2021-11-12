@@ -34,7 +34,6 @@ public class PersonaManager extends IndexManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -69,7 +68,6 @@ public class PersonaManager extends IndexManager{
                 this.readString());
         return persona;
     }
-
     /**
      * Pasa todos los datos del fichero a un fichero de texto
      * Precondiciones: el fichero debe contener al menos un elemento de la clase Person

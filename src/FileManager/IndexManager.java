@@ -6,15 +6,13 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class IndexManager {
-    private final static int REG_SIZE=26;
+    private final static int REG_SIZE=23;
     private File file;
     protected RandomAccessFile randomAccess;
-
     public long lastIndex()
     {
         return file.length()/REG_SIZE;
     }
-
     public IndexManager(File file) {
         this.file = file;
         try {
@@ -23,7 +21,6 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
     public IndexManager(String fileName) {
         this.file= new File(fileName);
         try {
@@ -32,7 +29,6 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
     /**
      * Metodo para facilitar la escritura de cadenas en el fichero
      *
@@ -57,7 +53,7 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-    protected String readString() {
+    public String readString() {
         String value = "";
         try {
             value = randomAccess.readUTF();
@@ -66,7 +62,6 @@ public class IndexManager {
         }
         return value;
     }
-
     /**
      * Metodo para facilitar la lectura de enteros del fichero
      *
@@ -76,14 +71,13 @@ public class IndexManager {
     public long readLong(long position) {
         int num = 0;
         try {
-            randomAccess.seek(position);
+            randomAccess.seek(position*REG_SIZE);
             num = randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return num;
     }
-
     public long getPosition(String dni)
     {
         String id;
@@ -91,8 +85,8 @@ public class IndexManager {
         boolean found=false;
         for(long i=0 ; i<file.length()/REG_SIZE && !found; i++)
         {
-            i= readLong(i*REG_SIZE);
-            id=readString();
+            i= readLong(i);
+            id= readString();
             if(id.equals(dni))
             {
                 position=i;

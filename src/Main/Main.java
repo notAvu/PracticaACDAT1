@@ -15,7 +15,7 @@ public class Main {
         IndexManager config= new IndexManager("config");
         String ans="";
         Scanner scan= new Scanner(System.in);
-        while(ans!="1"||ans!="2"||ans!="3")
+        while(!ans.equals("1") || !ans.equals("2") || !ans.equals("3"))
         {
             Menu.printMenu();
             ans=scan.next();
@@ -25,10 +25,8 @@ public class Main {
                 }
                 case "2" -> {
                     Menu.printInfo(Menu.DNI);
-
 //                    String dni = scan.next();
 //                    Persona p= clients.readPerson(indice.);
-
                 }
                 case "3" -> {
                     Menu.printInfo(Menu.DNI);
@@ -46,13 +44,11 @@ public class Main {
             }
         }
     }
-
     private static void addToIndex(IndexManager manager,String dni, long position)
     {
         manager.writeNumber(position);
         manager.writeString(dni);
     }
-
     private static void addPersona(PersonaManager clientManager, Scanner scan, IndexManager indexManager) {
         String nombre="";
         String apellido="";
@@ -71,36 +67,30 @@ public class Main {
         clientManager.writePerson(persona, nextPosition);
         addToIndex(indexManager, dni, nextPosition);
     }
-
-
     private static String askDireccion(Scanner scan) {
         String direccion;
         Menu.printInfo(Menu.DIRECCION);
         direccion = scan.next();
         return direccion;
     }
-
     private static String askTelefono(Scanner scan) {
         String telefono;
         Menu.printInfo(Menu.TELEFONO);
         telefono = scan.next();//TODO VALIDAR TELEFONO
         return telefono;
     }
-
     private static String askApellido(Scanner scan) {
         String apellido;
         Menu.printInfo(Menu.APELLIDO);
         apellido = scan.next();
         return apellido;
     }
-
     private static String askNombre(Scanner scan) {
         String nombre;
         Menu.printInfo(Menu.NOMBRE);
         nombre = scan.next();
         return nombre;
     }
-
     private static String askDni(Scanner scan) {
         String dni;
         Menu.printInfo(Menu.DNI);

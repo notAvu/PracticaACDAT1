@@ -15,7 +15,6 @@ public class Menu {
     public static final String DNI="DNI del cliente";
     public static final String DIRECCION="Direccion del cliente:";
     public static final String TELEFONO="Numero de telefono del cliente";
-
     public static void printMenu()
     {
         System.out.println(MAIN_MENU);
@@ -27,8 +26,5 @@ public class Menu {
     {
         System.out.println("El DNI no es valido");
     }
-    public static void invalidTelephone()
-    {
-        System.out.println("El valor introducido no es un numero de telefono valido");
-    }
+    public static void invalidTelephone() { System.out.println("El valor introducido no es un numero de telefono valido"); }
 }

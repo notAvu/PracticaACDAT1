@@ -10,13 +10,11 @@ public class TextFileManager {
     BufferedWriter writer;
     BufferedReader reader;
     Charset charset;
-
     public TextFileManager(Charset charset)
     {
         txtFile=new File("InfoClientesTxt");
         this.charset=charset;
     }
-
     private void iniReader()
     {
         try {
@@ -32,7 +30,6 @@ public class TextFileManager {
             exception.printStackTrace();
         }
     }
-
     public void writeClient(Persona client)
     {
         iniWriter();
@@ -43,7 +40,6 @@ public class TextFileManager {
         }
         closeWriter();
     }
-
     private void closeWriter() {
         try {
             writer.close();

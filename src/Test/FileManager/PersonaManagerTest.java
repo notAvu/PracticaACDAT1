@@ -30,6 +30,6 @@ class PersonaManagerTest {
     @Test
     void exportTest() {
         escribirClientes();
-        CLIENTE.export(StandardCharsets.UTF_16);//TODO testear con textfilemanager si se ha exportado el contenido del fichero correctamente
+//        CLIENTE.export(StandardCharsets.UTF_16);
     }
 }
