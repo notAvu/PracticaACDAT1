@@ -27,6 +27,10 @@ public class Menu {
     {
         System.out.println("El DNI no es valido");
     }
+    public static void dniNotFound()
+    {
+        System.out.println("El dni introducido no ha sido encontrado en el fichero");
+    }
     public static void invalidTelephone()
     {
         System.out.println("El valor introducido no es un numero de telefono valido");

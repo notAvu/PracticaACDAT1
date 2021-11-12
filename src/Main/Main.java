@@ -25,14 +25,26 @@ public class Main {
                 }
                 case "2" -> {
                     Menu.printInfo(Menu.DNI);
+                    String input=scan.next();
+                    String dni=askDni(scan);
+                    if(indice.getPosition(dni)==-1)
+                    {
+                        Menu.dniNotFound();
+                    }else
+                    {
+                        indice.getPosition(input);
+                        System.out.println();
+                    }
 
-//                    String dni = scan.next();
-//                    Persona p= clients.readPerson(indice.);
 
                 }
                 case "3" -> {
                     Menu.printInfo(Menu.DNI);
-                    String dni=scan.next();
+                    String dni=askDni(scan);
+                    if(indice.getPosition(dni)==-1)
+                    {
+                        Menu.dniNotFound();
+                    }
                 }
                 case "4" -> {
 

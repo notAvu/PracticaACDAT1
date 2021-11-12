@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class IndexManager {
-    private final static int REG_SIZE=13;
+    private final static int REG_SIZE=17;
     private static int position;
     private File file;
     protected RandomAccessFile randomAccess;
@@ -88,10 +88,15 @@ public class IndexManager {
         return num;
     }
 
+    /**
+     * Devuelve el indice si el dni esta en el fichero, si no devuelve -1
+     * @param dni
+     * @return
+     */
     public long getPosition(String dni)
     {
         String id;
-        long position=0;
+        long position=-1;
         boolean found=false;
         for(long i=0 ; i<file.length()/REG_SIZE && !found; i++)
         {
