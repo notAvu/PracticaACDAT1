@@ -95,8 +95,7 @@ public class IndexManager {
         {
             i= readLong(i);
             id= readString();
-            if(id.equals(dni))
-            {
+            if(id.equals(dni)) {
                 position=i;
                 found=true;
             }
