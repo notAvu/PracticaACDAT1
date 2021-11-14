@@ -27,11 +27,9 @@ public class Main {
                     Menu.printInfo(Menu.DNI);
                     String input=scan.next();
                     String dni=askDni(scan);
-                    if(indice.getPosition(dni)==-1)
-                    {
+                    if(indice.getPosition(dni)==-1) {
                         Menu.dniNotFound();
-                    }else
-                    {
+                    }else {
                         indice.getPosition(input);
                         System.out.println();
                     }
@@ -39,8 +37,7 @@ public class Main {
                 case "3" -> {
                     Menu.printInfo(Menu.DNI);
                     String dni=askDni(scan);
-                    if(indice.getPosition(dni)==-1)
-                    {
+                    if(indice.getPosition(dni)==-1) {
                         Menu.dniNotFound();
                     }
                 }
