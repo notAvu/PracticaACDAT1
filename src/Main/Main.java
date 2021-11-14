@@ -35,8 +35,6 @@ public class Main {
                         indice.getPosition(input);
                         System.out.println();
                     }
-
-
                 }
                 case "3" -> {
                     Menu.printInfo(Menu.DNI);

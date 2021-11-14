@@ -2,19 +2,24 @@ package Clases;
 
 public class DniValidator {
     private String dni;
+    private final int DNI_LENGTH=9;
+
+    /**
+     * Constructor de la clase del validador de DNI, en el caso de que el string sea menor
+     * @param inputDni
+     */
     public DniValidator(String inputDni) {
-        if(inputDni.length()<9){
-            for(int i=0; i<(18-inputDni.length()); i++)
-            {
-                inputDni+="U";
-            }
-        }
+//        if(inputDni.length()<DNI_LENGTH){
+//            for(int i=0; i<(DNI_LENGTH*2-inputDni.length()); i++){
+//                inputDni+="U";
+//            }
+//        }
         this.dni = inputDni;
     }
     public boolean validar() {
         String letraMayuscula;
         boolean valido=false;
-        if (dni.length() == 9 || Character.isLetter(this.dni.charAt(8))) {
+        if (dni.length() == DNI_LENGTH && Character.isLetter(this.dni.charAt(8))) {
             letraMayuscula = (this.dni.substring(8)).toUpperCase();
             if (soloNumeros() && letraDNI().equals(letraMayuscula)) {
                 valido = true;
