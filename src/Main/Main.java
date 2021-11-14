@@ -15,7 +15,7 @@ public class Main {
         IndexManager config= new IndexManager("config");
         String ans="";
         Scanner scan= new Scanner(System.in);
-        while(ans!="1"||ans!="2"||ans!="3")
+        while(!ans.equals("1") || !ans.equals("2") || !ans.equals("3"))
         {
             Menu.printMenu();
             ans=scan.next();

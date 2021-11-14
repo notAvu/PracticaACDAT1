@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class IndexManager {
-    private final static int REG_SIZE=26;
+    private final static int REG_SIZE=23;
     private File file;
     protected RandomAccessFile randomAccess;
 
@@ -45,7 +45,6 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
     /**
      * Metodo para facilitar la escritura de enteros en el fichero
      *
@@ -58,8 +57,7 @@ public class IndexManager {
             e.printStackTrace();
         }
     }
-
-    protected String readString() {
+    public String readString() {
         String value = "";
         try {
             value = randomAccess.readUTF();
@@ -78,7 +76,7 @@ public class IndexManager {
     public long readLong(long position) {
         int num = 0;
         try {
-            randomAccess.seek(position);
+            randomAccess.seek(position*REG_SIZE);
             num = randomAccess.readInt();
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,9 +85,26 @@ public class IndexManager {
     }
 
     /**
-     * Devuelve el indice si el dni esta en el fichero, si no devuelve -1
+     * Cambia el numero de la posicion de un registro a -1 para denotar que ese registro no existe
+     * y asi no se reconozca en las busquedas
+     * @param position
+     */
+    public void borrarRegistro(long position)
+    {
+        try {
+            randomAccess.seek(position*REG_SIZE);
+            randomAccess.writeLong(-1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Permite obtener la posicion de un DNI en el indice
+     * Precondiciones: el DNI debe haber sido validado
+     * Poscondiciones: ninguna
      * @param dni
-     * @return
+     * @return position : posicion del dni en el fichero de indice
      */
     public long getPosition(String dni)
     {

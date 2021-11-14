@@ -31,11 +31,23 @@ class IndexManagerTest {
     void testReadLong() {
         assertEquals(0, FIN.readLong(0));
     }
+    @Test
+    void testWriteReadRegistry()
+    {
+        assertEquals(1, FIN.readLong(1));
+        assertEquals("32345678R", FIN.readString());
+    }
 
     @Test
     void testGetPosition() {
         assertEquals(0, FIN.getPosition("12345678R"));
         assertEquals(1, FIN.getPosition("32345678R"));
         assertEquals(2, FIN.getPosition("22345678R"));
+    }
+
+    @Test
+    void borrarRegistro() {
+        FIN.borrarRegistro(2);
+        assertEquals(-1, FIN.readLong(2));
     }
 }
